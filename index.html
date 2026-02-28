@@ -89,11 +89,18 @@ highScore = localStorage.getItem("snakeHighScore") || 0;
 document.getElementById("highScore").textContent = highScore;
 
 function initGame() {
-    snake = [{x: 0, y: 0},{x: 0, y: SIZE},{x: 0, y: SIZE*2}];
+    snake = [{x: SIZE*2, y: SIZE*2},{x: SIZE*2, y: SIZE},{x: SIZE*2, y: 0}];
     direction = "down";
     score = 0;
     document.getElementById("score").textContent = score;
+
     food = spawnFood();
+    while (snake.some(part => part.x === food.x && part.y === food.y)) {
+        food = spawnFood();
+    }
+
+    draw();
+
     if (gameInterval) clearInterval(gameInterval);
     gameInterval = setInterval(gameLoop, SPEED);
 }
@@ -186,6 +193,7 @@ function gameOver() {
 }
 
 function restartGame() {
+    clearInterval(gameInterval);
     initGame();
 }
 
