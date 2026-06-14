@@ -61,7 +61,7 @@ button {
     <!-- Paste Google AdSense code here -->
 </div>
 
-<canvas id="gameCanvas" width="600" height="600"></canvas>
+<canvas id="gameCanvas" width="600" height="450"></canvas>
 
 <div class="controls">
     <button onclick="changeDirection('up')">⬆</button><br>
@@ -118,7 +118,7 @@ function draw() {
     ctx.fillStyle = "red";
     ctx.fillRect(food.x, food.y, SIZE, SIZE);
 
-    ctx.fillStyle = "lime";
+    ctx.fillStyle = "blue";
     snake.forEach(part => {
         ctx.fillRect(part.x, part.y, SIZE, SIZE);
     });
@@ -206,8 +206,20 @@ function playBeep() {
     oscillator.stop(audioCtx.currentTime + 0.1);
 }
 
+
+
 initGame();
 </script>
+<script
+  async
+  type="module"
+  src="https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js">
+</script>
+
+<zapier-interfaces-chatbot-embed
+  is-popup="true"
+  chatbot-id="YOUR_CHATBOT_ID">
+</zapier-interfaces-chatbot-embed>
 
 </body>
 </html>
